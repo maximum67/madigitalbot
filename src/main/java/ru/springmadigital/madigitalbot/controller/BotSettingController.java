@@ -16,8 +16,9 @@ public class BotSettingController {
     }
 
 @GetMapping("/success")
-   public String getSucceessPage() {
-        return "success";
+   public String getSucceessPage(Model model) {
+    model.addAttribute("title","success");
+    return "success";
    }
 
 

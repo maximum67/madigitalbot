@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:javascript="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,7 +39,10 @@
                 <a class="nav-link active" aria-current="page" href="#">Главная</a>
                 <a class="nav-link" href="/setting/features">Функции</a>
                 <a class="nav-link" href="#">Контакты</a>
-                <a class="nav-link" href="#">Выход</a>
+                <a class="nav-link" href="javascript: document.logoutForm.submit()">Выход</a>
+                       <form name="logoutForm" th:action="@{/auth/logout}" method="post" th:hidden="true">
+                       <input hidden type="submit" value="Выход"/>
+                       </form>
             </nav>
         </div>
     </header>
