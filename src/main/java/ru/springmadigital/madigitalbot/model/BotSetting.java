@@ -2,6 +2,7 @@ package ru.springmadigital.madigitalbot.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import ru.springmadigital.madigitalbot.botwork.StartMainBot;
 
 import java.time.LocalDate;
 

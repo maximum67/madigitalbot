@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import ru.springmadigital.madigitalbot.botwork.PasswordKey;
 import ru.springmadigital.madigitalbot.model.Role;
 
 @Configuration
@@ -57,6 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .password(passwordEncoder().encode("Aspirin15"))
                         .authorities(Role.USER.getAuthorities())
                         .build()
+
         );
 
      }

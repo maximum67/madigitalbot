@@ -2,11 +2,14 @@ package ru.springmadigital.madigitalbot.rest;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import ru.springmadigital.madigitalbot.botwork.StartMainBot;
 import ru.springmadigital.madigitalbot.model.BotSetting;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static ru.springmadigital.madigitalbot.botwork.StartMainBot.startBot;
 
 @RestController
 @RequestMapping("/api/v1/botsetting")
@@ -29,11 +32,16 @@ public class BotSettingRestController {
                 .findFirst()
                 .orElse(null);
     }
-    @PostMapping
+    /*@PostMapping
     @PreAuthorize("hasAuthority('setting:write')")
     public BotSetting create(@RequestBody BotSetting botSetting){
         this.botSettings.add(botSetting);
-        return botSetting;
+        return botSetting;*/
+    @PostMapping
+    @PreAuthorize("hasAuthority('setting:write')")
+    public void create(){
+        new StartMainBot().startBot();
+
     }
     @DeleteMapping("/{name}")
     @PreAuthorize("hasAuthority('setting:write')")

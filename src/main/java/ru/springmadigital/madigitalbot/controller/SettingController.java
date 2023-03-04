@@ -20,4 +20,9 @@ public class SettingController {
         model.addAttribute("title", "Функции");
         return "features";
     }
+    @GetMapping("/setting/contacts")
+    public String getContactsPage(Model model) {
+        model.addAttribute("title", "Контакты");
+        return "contacts";
+    }
 }

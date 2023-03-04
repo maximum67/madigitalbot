@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
-<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>madigital project</title>
+    <title th:text="${title}"/>
 
     <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=ls7cwnc9yJB8LoeryW8mjKTi-BA_rHU1en-Nf1Ze25lBJ_Uy-DdMBMZVFgu-Nvcs0FBEQ_AsDd7HDMkHY-YpcYgO3LAc3LhHZtUesrsFFBo" charset="UTF-8"></script><style>
     .bd-placeholder-img {
@@ -28,16 +28,16 @@
     <link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" type="text/css" rel="stylesheet" />
 
 </head>
-<body class="d-flex h-100 text-center text-white bg-secondary">
 
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <body class="d-flex h-100 text-center text-white bg-secondary">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <header class="mb-auto">
         <div>
             <h3 class="float-md-start mb-0">MADigital</h3>
             <nav class="nav nav-masthead justify-content-center float-md-end">
                 <a class="nav-link" href="/setting/home">Главная</a>
-                <a class="nav-link active" aria-current="page" href="#">Функции</a>
-                <a class="nav-link" href="/setting/contacts">Контакты</a>
+                <a class="nav-link" href="/setting/features">Функции</a>
+                <a class="nav-link active" aria-current="page" href="#">Контакты</a>
                 <a class="nav-link" href="javascript: document.logoutForm.submit()">Выход</a>
                 <form name="logoutForm" th:action="@{/auth/logout}" method="post" th:hidden="true">
                     <input hidden type="submit" value="Выход"/>
@@ -46,22 +46,18 @@
         </div>
     </header>
 
-    <main class="px-3">
-        <h1>Страница для ввода основных настроек</h1>
-        <p class="lead">Поле для размещения основных данных</p>
-        <button type="submit" class="btn btn-lg btn-secondary fw-bold border-white">Запустить </button>
-        <form name="startForm" th:action="@{/api/v1/botsetting}" method="post" th:hidden="true">
-            <input hidden type="submit" value="Старт"/>
-        </form>
-        <button type="submit" class="btn btn-lg btn-secondary fw-bold border-white">Остановить</button>
-    </main>
+        <main class="px-3">
+            <h1>Контакты</h1>
+            <p class="lead"> Смоленск MADigital</p>
 
+        </main>
     <footer class="mt-auto text-white-50">
-        <div th:insert="blocks/footer :: footer"></div>
+            <div th:insert="blocks/footer :: footer"></div>
     </footer>
+
 </div>
 
 
-
 </body>
+
 </html>
