@@ -10,9 +10,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class BotSetting {
     private String name;
-    private String botkey;
-    private String localDate;
-
+    private String tokenbot;
+    private String active;
 
 
 }

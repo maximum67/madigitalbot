@@ -16,9 +16,9 @@ import java.util.stream.Stream;
 @RequestMapping("/api/v1/botsetting")
 public class BotSettingRestController {
     private List<BotSetting> botSettings = Stream.of(
-            new BotSetting("telegabot1", "HHHHHHHH", "2021,12,11"),
-            new BotSetting("telegabot2", "MMMMMMMM", "2021,12,12"),
-            new BotSetting("telegabot3", "PPPPPPPP", "2021,12,13")
+            new BotSetting("telegabot1","rrrtttyyy","не активен"),
+            new BotSetting("telegabot2","yyytttrrr","не активен"),
+            new BotSetting("telegabot3","iiiuuuyyy","не активен")
     ).collect(Collectors.toList());
 
 
@@ -26,10 +26,11 @@ public class BotSettingRestController {
     public List<BotSetting> getAll(){
         return botSettings;
     }
+
     @GetMapping("/all")
-    public String getBotLists(List<BotSetting> botSettings, Model model){
-        this.botSettings = botSettings;
-        model.addAttribute("botSetings", botSettings);
+    public String getBotLists(BotSetting botSetting,Model model){
+
+        model.addAttribute("botSettings", botSettings);
         model.addAttribute("title","список ботов");
         return "botlists";
     }

@@ -47,22 +47,26 @@
     </header>
 
     <main class="px-3">
-        <h1>Список зарегистрированных ботов</h1>
-        <p class="lead">Поле для размещения основных данных</p>
-    </main>
-    <table>
+        <h2>Список зарегистрированных ботов</h2>
+<!--        <p class="lead">Поле для размещения основных данных</p>-->
+    </main><br>
+    <table border="1">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Зарегистрированные боты</th>
+<!--            <th>ID</th>-->
+            <th>Имя бота</th>
+            <th>Токен бота</th>
+            <th>Активность</th>
+
         </tr>
         </thead>
         <tbody>
-        <tr th:each="bot, iterStat : ${botSettings}"
-            th:style="${iterStat.odd}? 'font-weight: bold;'">
-            <td th:text="${iterStat.index}+1"></td>
+        <tr th:each="bot : ${botSettings}">
             <td th:text="${bot.name}"></td>
+            <td th:text="${bot.tokenbot}"></td>
+            <td th:text="${bot.active}"></td>
         </tr>
+
         </tbody>
     </table>
     <footer class="mt-auto text-white-50">
