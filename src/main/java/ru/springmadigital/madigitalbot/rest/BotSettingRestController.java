@@ -1,17 +1,18 @@
 package ru.springmadigital.madigitalbot.rest;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.springmadigital.madigitalbot.botwork.StartMainBot;
 import ru.springmadigital.madigitalbot.model.BotSetting;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static ru.springmadigital.madigitalbot.botwork.StartMainBot.startBot;
 
-@RestController
+
+@Controller
 @RequestMapping("/api/v1/botsetting")
 public class BotSettingRestController {
     private List<BotSetting> botSettings = Stream.of(
@@ -20,10 +21,20 @@ public class BotSettingRestController {
             new BotSetting("telegabot3", "PPPPPPPP", "2021,12,13")
     ).collect(Collectors.toList());
 
+
     @GetMapping
     public List<BotSetting> getAll(){
         return botSettings;
     }
+    @GetMapping("/all")
+    public String getBotLists(List<BotSetting> botSettings, Model model){
+        this.botSettings = botSettings;
+        model.addAttribute("botSetings", botSettings);
+        model.addAttribute("title","список ботов");
+        return "botlists";
+    }
+
+
 
     @GetMapping("/{name}")
     @PreAuthorize("hasAuthority('setting:read')")
@@ -40,7 +51,7 @@ public class BotSettingRestController {
     @PostMapping
     @PreAuthorize("hasAuthority('setting:write')")
     public void create(){
-        new StartMainBot().startBot();
+
 
     }
     @DeleteMapping("/{name}")
